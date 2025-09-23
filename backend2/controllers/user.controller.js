@@ -121,8 +121,9 @@ export const login = async (req, res) => {
       .status(200)
       .cookie("token", token, {
         maxAge: 1 * 24 * 60 * 60 * 1000,    //Sets how long the cookie will stay in the browser before it expires.
-        httpsOnly: true,
-        sameSite: "strict", //Prevents the browser from sending this cookie along with cross-site requests.
+        httpOnly: true,
+        secure: true,
+        sameSite: "None", //Prevents the browser from sending this cookie along with cross-site requests.
       })
       .json({
         message: `welcome back ${user.fullname}`,
